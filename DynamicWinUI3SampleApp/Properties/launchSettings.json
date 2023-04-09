@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DynamicWinUI3SampleApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DynamicWinUI3SampleApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

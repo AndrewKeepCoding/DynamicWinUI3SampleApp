@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="DynamicWinUI3SampleApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:DynamicWinUI3SampleApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid
+        Margin="5"
+        ColumnDefinitions="3*,10,2*">
+        <Grid.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="FontFamily" Value="Consolas" />
+                <Setter Property="AcceptsReturn" Value="True" />
+                <Setter Property="IsSpellCheckEnabled" Value="False" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+            </Style>
+        </Grid.Resources>
+        <Grid
+            Grid.Column="0"
+            RowDefinitions="Auto,*"
+            RowSpacing="10">
+            <StackPanel
+                Grid.Row="0"
+                Orientation="Horizontal"
+                Spacing="10">
+                <!--  Sample 1 button  -->
+                <Button
+                    Click="Sample1Button_Click"
+                    Content="Sample 1" />
+                <!--  Sample 2 button  -->
+                <Button
+                    Click="Sample2Button_Click"
+                    Content="Sample 2" />
+                <!--  Sample 3 button  -->
+                <Button
+                    Click="Sample3Button_Click"
+                    Content="Sample 3" />
+            </StackPanel>
+            <Grid
+                Grid.Row="1"
+                RowDefinitions="*,10,*">
+                <!--  XAML  -->
+                <TextBox
+                    x:Name="XamlCodeTextBox"
+                    Grid.Row="0"
+                    Header="XAML"
+                    PlaceholderText="Input XAML code here..." />
+                <controls:GridSplitter
+                    Grid.Row="1"
+                    Opacity="0"
+                    ResizeBehavior="BasedOnAlignment" />
+                <!--  ViewModel  -->
+                <TextBox
+                    x:Name="CSharpCodeTextBox"
+                    Grid.Row="2"
+                    Header="ViewModel"
+                    PlaceholderText="Input ViewModel code here..." />
+            </Grid>
+        </Grid>
+        <controls:GridSplitter
+            Grid.Column="1"
+            Opacity="0"
+            ResizeBehavior="BasedOnAlignment" />
+        <Grid
+            Grid.Column="2"
+            RowDefinitions="Auto,*,Auto"
+            RowSpacing="10">
+            <!--  Create dynamic contents  -->
+            <Button
+                x:Name="CreateDynamicContentsButton"
+                Grid.Row="0"
+                Click="CreateDynamicContentsButton_Click"
+                Content="Create dynamic contents" />
+            <!--  Dynamic contents  -->
+            <Frame
+                x:Name="DynamicContentFrame"
+                Grid.Row="1"
+                BorderBrush="DimGray"
+                BorderThickness="0" />
+            <!--  Errors  -->
+            <InfoBar
+                x:Name="ErrorsInfoBar"
+                Title="Error"
+                Grid.Row="2"
+                VerticalAlignment="Bottom"
+                Message="Failed to create UI content."
+                Severity="Error">
+                <InfoBar.Content>
+                    <Grid Margin="0,0,0,10">
+                        <ItemsRepeater x:Name="ErrorsInfoBarItemsRepeater" />
+                    </Grid>
+                </InfoBar.Content>
+            </InfoBar>
+        </Grid>
+    </Grid>
+
+</Page>
